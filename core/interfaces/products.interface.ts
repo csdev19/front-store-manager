@@ -1,21 +1,11 @@
 export interface IProduct {
-  id: number;
+  id?: number;
   name: string;
+  description: string;
   price: number;
   stock: number;
-  description: string;
-  images: string[];
-  frontImage: string;
+  images: string[] | Blob[];
+  frontImage: string | Blob;
   isVisible: boolean;
-}
-
-export interface IProductCreate {
-  id: number;
-  name: string;
-  price: number;
-  stock: number;
-  description: string;
-  images: Blob[];
-  frontImage: Blob;
-  isVisible: boolean;
+  categories: number[];
 }
