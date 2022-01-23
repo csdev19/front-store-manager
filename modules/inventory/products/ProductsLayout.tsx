@@ -18,6 +18,7 @@ import { IProduct } from 'core/interfaces/products.interface';
 import AddIcon from '@mui/icons-material/Add';
 import AdminLayout from 'components/AdminLayout';
 import theme from 'theme';
+import Link from 'next/link';
 
 function createData(
   id: number,
@@ -53,14 +54,15 @@ const ProductsLayout: VoidFunctionComponent = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AdminLayout />
-        <Container maxWidth="lg">
+        <AdminLayout>
           <h1>Products layout</h1>
 
           <div>
-            <Button variant="contained" startIcon={<AddIcon />}>
-              Crear
-            </Button>
+            <Link href="/inventory/products/create">
+              <Button variant="contained" startIcon={<AddIcon />}>
+                Crear
+              </Button>
+            </Link>
           </div>
 
           <div>
@@ -78,7 +80,9 @@ const ProductsLayout: VoidFunctionComponent = () => {
                   {rows.map((row) => (
                     <TableRow
                       key={row.name}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                      sx={{
+                        '&:last-child td, &:last-child th': { border: 0 },
+                      }}
                     >
                       <TableCell component="th" scope="row">
                         {row.name}
@@ -100,7 +104,7 @@ const ProductsLayout: VoidFunctionComponent = () => {
               </Table>
             </TableContainer>
           </div>
-        </Container>
+        </AdminLayout>
       </ThemeProvider>
     </>
   );
